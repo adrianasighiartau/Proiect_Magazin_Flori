@@ -1,0 +1,46 @@
+﻿@page
+@model Proiect_Magazin_Flori.Areas.Identity.Pages.Floare.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Detalii despre floare</h1>
+
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Floare.Denumire)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Floare.Denumire)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Floare.Culoare)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Floare.Culoare)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Floare.Pret)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Floare.Pret)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Floare.Stoc)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Floare.Stoc)
+        </dd>
+    </dl>
+</div>
+<div>
+    <form style="visibility:@(Model.Floare.Stoc == 0 ? "hidden" : "visible");" method="post">
+        <button asp-page-handler="AdaugaInCos" >Adauga in cos</button>
+        <input type="hidden" name="id" value="@Model.Floare.ID" />
+    </form>
+    <a asp-page="./Index">Inapoi</a>
+</div>

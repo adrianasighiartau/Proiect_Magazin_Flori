@@ -1,0 +1,57 @@
+﻿@page
+@model Proiect_Magazin_Flori.Areas.Identity.Pages.Cos.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Cosul tau de cumparaturi!</h1>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Cos[0].Floare)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cos[0].Floare.Culoare)
+            </th>
+            <th>
+                Pret/buc
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cos[0].Cantitate)
+            </th>
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Cos) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Floare.Denumire)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Floare.Culoare)
+            </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Floare.Pret)
+                </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cantitate)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
+                <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
+            </td>
+        </tr>
+}
+
+    </tbody>
+</table>
+<form style="visibility:@(Model.Cos.Count == 0 ? "hidden" : "visible");" method="post">
+    <button asp-page-handler="PlaseazaComanda">Plaseaza comanda!</button>
+</form>
